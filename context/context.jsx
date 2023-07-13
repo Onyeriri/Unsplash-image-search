@@ -8,7 +8,7 @@ const body = document.querySelector('body');
 
 // Check if the user is in dark mode
 function isDarkModeEnabled() {
-    const userOption = localStorage.getItem('dark-theme');
+    const userOption = JSON.parse(localStorage.getItem('dark-theme'));
 
     // check if the user has saved an option on local storage
     if (userOption === null) {
@@ -24,12 +24,18 @@ export const AppContextProvider = ({ children }) => {
     const [isDarkTheme, setIsDarkTheme] = useState(isDarkModeEnabled());
     const [userInput, setUserInput] = useState('');
 
+    console.log(isDarkModeEnabled());
+
     // toggle between light and dark theme
     const toggleDarkTheme = () => {
         setIsDarkTheme(!isDarkTheme);
         
         body.classList.toggle('dark-theme');
         localStorage.setItem('dark-theme', !isDarkTheme);
+    }
+
+    if (isDarkTheme) {
+        body.classList.add('dark-theme');
     }
 
     return <GlobalContext.Provider

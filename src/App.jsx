@@ -4,6 +4,7 @@ import ThemeToggle from './components/ThemeToggle';
 import SearchForm from './components/searchForm';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ToastContainer } from 'react-toastify';
+import Title from './components/Title';
 
 
 
@@ -13,6 +14,7 @@ const App = () => {
   return (
     <div id='main'>
         <ThemeToggle />
+        <Title />
         <SearchForm />
         <Gallery />
         <ReactQueryDevtools />
