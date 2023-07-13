@@ -1,7 +1,7 @@
 import { useGlobalContext } from '../context/context';
 import Gallery from './components/Gallery';
 import ThemeToggle from './components/ThemeToggle';
-import SearchForm from './components/searchForm';
+import SearchForm from './components/SearchForm';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ToastContainer } from 'react-toastify';
 import Title from './components/Title';
