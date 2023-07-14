@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { icons } from '../src/components/icons/icons';
 
 const GlobalContext = createContext();
@@ -22,21 +22,19 @@ function isDarkModeEnabled() {
 
 export const AppContextProvider = ({ children }) => {
     const [isDarkTheme, setIsDarkTheme] = useState(isDarkModeEnabled());
-    const [userInput, setUserInput] = useState('');
+    const [userInput, setUserInput] = useState('benz');
 
     console.log(isDarkModeEnabled());
 
     // toggle between light and dark theme
     const toggleDarkTheme = () => {
         setIsDarkTheme(!isDarkTheme);
-        
-        body.classList.toggle('dark-theme');
-        localStorage.setItem('dark-theme', !isDarkTheme);
+        localStorage.setItem('dark-theme', !isDarkTheme)
     }
 
-    if (isDarkTheme) {
-        body.classList.add('dark-theme');
-    }
+    useEffect(() => {
+        body.classList.toggle('dark-theme', isDarkTheme);
+    }, [isDarkTheme])
 
     return <GlobalContext.Provider
         value={

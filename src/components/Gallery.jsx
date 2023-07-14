@@ -8,7 +8,7 @@ const Gallery = () => {
     const { userInput , setUserInput } = useGlobalContext();
 
     const { data, isError, isInitialLoading } = useQuery({
-        queryKey: ['images'],
+        queryKey: ['images', userInput],
         queryFn: async () => {
             const { data } = await customFetch.get(`/photos?page=1&query=${userInput}&client_id=${import.meta.env.VITE_CODE_BOOK}`);
 
@@ -18,10 +18,10 @@ const Gallery = () => {
         },
         // use onSuccess to setUserInput to set userInput state to an empty string and enable page render
         onSuccess: () => {
-            setUserInput('');
+            // setUserInput('');
             toast.success('Success');
         },
-        enabled: !!userInput,
+        // enabled: !!userInput,
     });
 
     
